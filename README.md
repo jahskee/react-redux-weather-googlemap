@@ -9,7 +9,7 @@ I am submitting my work.
       - move styling to its own css file    
       - disable redux logging during production
 
-Please see the website: https://www.stratteos.us/
+Please see website: https://www.stratteos.us/
 
 ![alt text](https://image.ibb.co/debisy/brussels.png)
 
