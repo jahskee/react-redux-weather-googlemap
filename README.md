@@ -1,4 +1,4 @@
 
-Please see website: https://www.stratteos.us/weather
+Please see website: https://www.stratteos.us
 
 ![alt text](https://image.ibb.co/debisy/brussels.png)
