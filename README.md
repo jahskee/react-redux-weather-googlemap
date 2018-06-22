@@ -1,4 +1,3 @@
-
-Please see website: https://www.stratteos.us
+website: https://www.stratteos.us
 
 ![alt text](https://image.ibb.co/debisy/brussels.png)
