@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import freeze from 'redux-freeze';
 import { createLogger } from "redux-logger";
 //import { loadState, saveState } from "./util/persist";
 import * as utils from "../../utils/utils";
@@ -9,15 +10,25 @@ import * as actionRepo from "../action/actions";
 
 import rootReducer from "../reducer/reducers";
 
+const middlewares = [];
+middlewares.push(thunk)
+
+if (process.env.NODE_ENV === `development`) {
+    console.log("we are on dev mode...")
+    const logger = createLogger({diff: true})      
+  //  middlewares.push(freeze); // returns error when state is mutated
+    middlewares.push(logger);
+}
+    
 export function configureStore() {
-  // const persistedState = loadState();
-  const persistedState = {};
-  const store = createStore(
-    rootReducer,
-    persistedState,
-    applyMiddleware(thunk, createLogger())
-  );
-  return store;
+    const persistedState = {};
+
+    const store = createStore(
+        rootReducer,
+        persistedState,
+        applyMiddleware(...middlewares)
+    );
+    return store;
 }
 
 const store = configureStore();
