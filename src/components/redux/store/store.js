@@ -5,9 +5,7 @@ import freeze from 'redux-freeze';
 import { createLogger } from "redux-logger";
 //import { loadState, saveState } from "./util/persist";
 import * as utils from "../../utils/utils";
-
 import * as actionRepo from "../action/actions";
-
 import rootReducer from "../reducer/reducers";
 
 const middlewares = [];
