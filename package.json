@@ -40,5 +40,6 @@
     "coveragePathIgnorePatterns": [
       "/setupJest.js"
     ]
-  }
+  },
+  "homepage": "/weather/"
 }
