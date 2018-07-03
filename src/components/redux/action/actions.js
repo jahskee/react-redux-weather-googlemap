@@ -49,24 +49,13 @@ export const fetchCurrentWeatherError = error => ({
   payload: error
 });
 
-const getProxyUrl = () => { 
-  let proxyUrl = "";
-  if (process.env.NODE_ENV === "development") {
-    proxyUrl = "https://cors-anywhere.herokuapp.com"
-  }
-  return proxyUrl;
-}
-
 // async actions creators
 export const updateCurrentWeather = (coordinate, date) => async dispatch => {
   dispatch(fetchCurrentWeatherSent({ isFetched: false }));
   try {
-
-   
-
     const myConfig = {
       exclude: "exclude=flags,minutely,hourly,alerts",
-      proxyUrl: getProxyUrl(),
+      proxyUrl: "https://cors-anywhere.herokuapp.com",
       darkSkyUrl: "https://api.darksky.net/forecast"
     };
     const currentWeather = await API.getWeatherByDate(
@@ -114,7 +103,7 @@ export const updatePastWeather = (
   try {
     const myConfig = {
       exclude: "exclude=flags,currently,minutely,hourly, alerts",
-      proxyUrl: getProxyUrl(),
+      proxyUrl: "https://cors-anywhere.herokuapp.com",
       darkSkyUrl: "https://api.darksky.net/forecast"
     };
     const pastWeather = await API.getWeatherByDate(coordinate, date, myConfig);
@@ -162,7 +151,7 @@ export const updateFutureWeather = (
   try {
     const myConfig = {
       exclude: "exclude=flags,currently,minutely,hourly, alerts",
-      proxyUrl: getProxyUrl(),
+      proxyUrl: "https://cors-anywhere.herokuapp.com",
       darkSkyUrl: "https://api.darksky.net/forecast"
     };
     const futureWeather = await API.getWeatherByDate(
