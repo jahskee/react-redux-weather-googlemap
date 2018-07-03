@@ -7,6 +7,10 @@ const API = {};
 
 API.getWeatherByDate = async (coordinate, date, myConfig) => {
   /* global fetch */
+  let weatherUrl = myConfig.darkSkyUrl;
+  if (process.env.NODE_ENV === "production") {
+    weatherUrl = "https://api.darksky.net/forecast";
+  }
 
   assert(coordinate !== null, "coordinate must not be null");
   assert(coordinate.lat !== null, "coordinate.lat must not be null");
@@ -20,7 +24,7 @@ API.getWeatherByDate = async (coordinate, date, myConfig) => {
 
     const epochTime = dateToEpoch(dateTime);
 
-    const URL = `${myConfig.darkSkyUrl}/${config.apiKey}/${coordinate.lat},${
+    const URL = `${weatherUrl}/${config.apiKey}/${coordinate.lat},${
       coordinate.long
     },${epochTime}?${myConfig.exclude}`;
 
